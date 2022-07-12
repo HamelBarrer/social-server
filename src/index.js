@@ -1,3 +1,14 @@
 import app from './app.js';
 
-app.listen('3000');
+import sequelize from './db/connection.js';
+
+const main = async () => {
+  try {
+    await sequelize.authenticate();
+    app.listen('3000');
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+main();

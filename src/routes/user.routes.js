@@ -1,21 +1,20 @@
 import { Router } from 'express';
 
+import {
+  readUser,
+  readUsers,
+  insertUser,
+  updateUser,
+} from '../controllers/userController.js';
+
 const router = Router();
 
-router.get('/:user_id', (req, res) => {
-  res.send('solo uno');
-});
+router.get('/:user_id', readUser);
 
-router.get('/', (req, res) => {
-  res.send('todos');
-});
+router.get('/', readUsers);
 
-router.post('/', (req, res) => {
-  res.send('registro');
-});
+router.post('/', insertUser);
 
-router.put('/:user_id', (req, res) => {
-  res.send('actualizacion');
-});
+router.put('/:user_id', updateUser);
 
 export default router;

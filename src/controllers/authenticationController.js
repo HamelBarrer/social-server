@@ -20,7 +20,9 @@ export const login = async (req, res) => {
   if (!passwordEquals)
     return res.status(404).send('user or password incorrect');
 
-  const token = jwt.sign({ user_id: user.user_id }, process.env.SECURITY_PAS);
+  const token = jwt.sign({ user_id: user.user_id }, process.env.SECURITY_PAS, {
+    expiresIn: '1h',
+  });
 
   res.status(200).send({ token: token });
 };
